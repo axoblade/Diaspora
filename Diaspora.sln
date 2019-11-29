@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diaspora.Android", "Diaspor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diaspora.iOS", "Diaspora.iOS\Diaspora.iOS.csproj", "{F54158A3-6E4F-4C46-BB2A-488FEAEF5351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diaspora", "Diaspora\Diaspora.csproj", "{747AE174-6F51-46E1-A10E-1A42FDA7A28B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diaspora", "Diaspora\Diaspora.csproj", "{747AE174-6F51-46E1-A10E-1A42FDA7A28B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

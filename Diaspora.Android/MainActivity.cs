@@ -8,12 +8,22 @@ using Android.Widget;
 using Android.OS;
 using Android;
 using Microsoft.TeamFoundation.Framework.Common;
+using Com.Sdsmdg.Harjot.Vectormaster;
+using Com.Sdsmdg.Harjot.Vectormaster.Models;
+using Android.Animation;
+using static Android.Support.Design.Widget.BottomNavigationView;
 
 namespace Diaspora.Droid
 {
     [Activity(Label = "Diaspora", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity//,IOnNavigationItemSelectedListener
     {
+        //private CurvedBottomNavigationView bottom_nav;
+        //private VectorMasterView fab, fab1, fab2;
+        //private RelativeLayout lin_id;
+        //private PathModel outline;
+        //ValueAnimator valueAnimator;
+
         const int RequestLocationId = 0;
 
         readonly string[] LocationPermissions =
@@ -68,5 +78,7 @@ namespace Diaspora.Droid
                 base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             }
         }
+
+        
     }
 }

@@ -84,7 +84,20 @@ namespace Diaspora
             }
 
         }
-         
-       
+
+        private void profile_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void home_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void emergency_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

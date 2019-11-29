@@ -10,43 +10,22 @@
     <StackLayout>
         <Label x:Name="mylat" Text="Latitude: " IsVisible="False" FontSize="13"/>
         <Label x:Name="mylong" Text="Longitude: " FontSize="13" IsVisible="False"/>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="600"/>
-            </Grid.RowDefinitions>
-            <maps:Map x:Name="map"
+      
+        <maps:Map x:Name="map"
                IsShowingUser="True"
-               MoveToLastRegionOnLayoutChange="False" HasZoomEnabled="True" Grid.Row="0">
-                <!--<x:Arguments>
-                    <maps:MapSpan>
-                        <x:Arguments>
-                            <maps:Position>
-                                <x:Arguments>
-                                    <x:Double>36.9628066</x:Double>
-                                    <x:Double>-122.0194722</x:Double>
-                                </x:Arguments>
-                            </maps:Position>
-                            <x:Double>0.01</x:Double>
-                            <x:Double>0.01</x:Double>
-                        </x:Arguments>
-                    </maps:MapSpan>
-                </x:Arguments>
-                <maps:Map.Pins>
-                    <maps:Pin Label="Santa Cruz"
-                       Address="The city with a boardwalk"
-                       Type="Place">
-                        <maps:Pin.Position>
-                            <maps:Position>
-                                <x:Arguments>
-                                    <x:Double>36.9628066</x:Double>
-                                    <x:Double>-122.0194722</x:Double>
-                                </x:Arguments>
-                            </maps:Position>
-                        </maps:Pin.Position>
-                    </maps:Pin>
-                </maps:Map.Pins>-->
-            </maps:Map>
-        </Grid>
+               MoveToLastRegionOnLayoutChange="True" HasZoomEnabled="True">
+        </maps:Map>
+        <StackLayout VerticalOptions="End" 
+                               HorizontalOptions="FillAndExpand" 
+                               Orientation="Horizontal"          
+                               Padding="10,5,10,5" HeightRequest="50" BackgroundColor="#E0F8F1">
+            <ImageButton HorizontalOptions="StartAndExpand" Source = "https://img.icons8.com/nolan/64/000000/user-male-circle.png" WidthRequest="100"
+                         BackgroundColor="Transparent" x:Name="profile" Clicked="profile_Clicked"/>
+            <ImageButton HorizontalOptions="CenterAndExpand" Source="https://img.icons8.com/nolan/64/000000/home-page.png" WidthRequest="110"
+                         BackgroundColor="Transparent" x:Name="home" Clicked="home_Clicked" />
+            <ImageButton HorizontalOptions="EndAndExpand" Source="https://img.icons8.com/cute-clipart/64/000000/warning-shield.png" WidthRequest="100"
+                         BackgroundColor="Transparent" x:Name="emergency" Clicked="emergency_Clicked" />
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
