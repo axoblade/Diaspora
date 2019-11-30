@@ -4,8 +4,10 @@ using Android.Runtime;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -22,10 +24,23 @@ namespace Diaspora
         public MainPage()
         {
             InitializeComponent();
-            getLocation();
+           // getLocation();
         }
 
-        public async void getLocation()
+        //public async void getLocation()
+        //{
+            
+
+        //}
+
+       
+
+        private void profile_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void home_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -34,8 +49,8 @@ namespace Diaspora
 
                 if (Location != null)
                 {
-                    mylat.Text += Location.Latitude.ToString();
-                    mylong.Text += Location.Longitude.ToString();
+                    mylat.Text = Location.Latitude.ToString();
+                    mylong.Text = Location.Longitude.ToString();
                     var ab = Location.Latitude;
                     var bc = Location.Longitude;
                     Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map
@@ -49,13 +64,23 @@ namespace Diaspora
                         Type = PinType.Place,
                         Position = new Position(ab, bc)
                     };
-                    Position position = new Position(ab,bc);
+                    Position position = new Position(ab, bc);
                     //MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
                     //Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map(mapSpan);
                     MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.444));
                     map.MoveToRegion(mapSpan);
                     map.Pins.Add(pin);
 
+                    //insert into database
+                    WebClient client = new WebClient();
+                    Uri uri = new Uri("http://www.akyinvestmentsltd.com/diaspora/index.php");
+                    NameValueCollection parameters = new NameValueCollection();
+                    parameters.Add("user_lat", mylat.Text);
+                    parameters.Add("user_long", mylong.Text);
+                    client.UploadValuesCompleted += Client_UploadValuesCompleted;
+                    client.UploadValuesAsync(uri, parameters);
+
+                    await Navigation.PushAsync(new MainPage());
                 }
                 else
                 {
@@ -82,22 +107,26 @@ namespace Diaspora
                 // Unable to get location
                 await DisplayAlert("Error", "Reload the APP", "Ok");
             }
-
-        }
-
-        private void profile_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void home_Clicked(object sender, EventArgs e)
-        {
-
+          
         }
 
         private void emergency_Clicked(object sender, EventArgs e)
         {
 
         }
+        private void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
+        {
+            string r = Encoding.UTF8.GetString(e.Result);
+            if (r == "login")
+            {
+                //exeption to handle if not logged in
+            }
+            else
+            {
+                DisplayAlert("Alert", r, "OK");
+            }
+
+        }
+
     }
 }
