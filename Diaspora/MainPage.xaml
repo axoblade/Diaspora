@@ -19,11 +19,11 @@
                                HorizontalOptions="FillAndExpand" 
                                Orientation="Horizontal"          
                                Padding="10,5,10,5" HeightRequest="50" BackgroundColor="#E0F8F1">
-            <ImageButton HorizontalOptions="StartAndExpand" Source = "https://img.icons8.com/nolan/64/000000/user-male-circle.png" WidthRequest="100"
+            <ImageButton HorizontalOptions="StartAndExpand" Source = "https://img.icons8.com/nolan/64/000000/user-male-circle.png" HeightRequest="50" WidthRequest="100"
                          BackgroundColor="Transparent" x:Name="profile" Clicked="profile_Clicked"/>
-            <ImageButton HorizontalOptions="CenterAndExpand" Source="https://img.icons8.com/nolan/64/000000/home-page.png" WidthRequest="110"
+            <ImageButton HorizontalOptions="CenterAndExpand" Source="https://img.icons8.com/nolan/64/000000/worldwide-location.png" WidthRequest="100" HeightRequest="100"
                          BackgroundColor="Transparent" x:Name="home" Clicked="home_Clicked" />
-            <ImageButton HorizontalOptions="EndAndExpand" Source="https://img.icons8.com/cute-clipart/64/000000/warning-shield.png" WidthRequest="100"
+            <ImageButton HorizontalOptions="EndAndExpand" Source="https://img.icons8.com/cute-clipart/64/000000/warning-shield.png" HeightRequest="50" WidthRequest="100"
                          BackgroundColor="Transparent" x:Name="emergency" Clicked="emergency_Clicked" />
         </StackLayout>
     </StackLayout>

@@ -1,39 +1,27 @@
-﻿using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Widget;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Xaml;
 
 namespace Diaspora
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Profile : ContentPage
     {
-        public MainPage()
+        public Profile()
         {
             InitializeComponent();
-           // getLocation();
+            LoadData();
         }
-
-        //public async void getLocation()
-        //{
-            
-
-        //}
-
-       
 
         private async void profile_Clicked(object sender, EventArgs e)
         {
@@ -49,8 +37,8 @@ namespace Diaspora
 
                 if (Location != null)
                 {
-                    mylat.Text = Location.Latitude.ToString();
-                    mylong.Text = Location.Longitude.ToString();
+                    var mylat = Location.Latitude.ToString();
+                    var mylong = Location.Longitude.ToString();
                     var ab = Location.Latitude;
                     var bc = Location.Longitude;
                     Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map
@@ -71,12 +59,14 @@ namespace Diaspora
                     map.MoveToRegion(mapSpan);
                     map.Pins.Add(pin);
 
+                    string upspt = "3";
                     //insert into database
                     WebClient client = new WebClient();
                     Uri uri = new Uri("http://www.akyinvestmentsltd.com/diaspora/index.php");
                     NameValueCollection parameters = new NameValueCollection();
-                    parameters.Add("user_lat", mylat.Text);
-                    parameters.Add("user_long", mylong.Text);
+                    parameters.Add("user_lat", mylat);
+                    parameters.Add("user_long", mylong);
+                    parameters.Add("user_id", upspt);
                     client.UploadValuesCompleted += Client_UploadValuesCompleted;
                     client.UploadValuesAsync(uri, parameters);
 
@@ -107,7 +97,7 @@ namespace Diaspora
                 // Unable to get location
                 await DisplayAlert("Error", "Reload the APP", "Ok");
             }
-          
+
         }
 
         private void emergency_Clicked(object sender, EventArgs e)
@@ -127,6 +117,25 @@ namespace Diaspora
             }
 
         }
-
+        public class ItemClass
+        {
+            public string user_id { get; set; }
+            public string u_name { get; set; }
+            public string u_position { get; set; }
+            public string u_pic { get; set; }
+            public string u_company { get; set; }
+            }
+        public async void LoadData()
+        {
+            var content = "";
+            HttpClient client = new HttpClient();
+            var RestURL = "http://www.akyinvestmentsltd.com/diaspora/results.php";
+            client.BaseAddress = new Uri(RestURL);
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.GetAsync(RestURL);
+            content = await response.Content.ReadAsStringAsync();
+            var Items = JsonConvert.DeserializeObject<List<ItemClass>>(content);
+            u_profile.ItemsSource = Items;
+        }
     }
 }

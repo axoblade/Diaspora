@@ -21,4 +21,10 @@
   <ItemGroup>
     <Folder Include="Views\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Profile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
