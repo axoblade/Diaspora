@@ -3,29 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
-             x:Class="Diaspora.MainPage">
-
-    <StackLayout>
-        <Label x:Name="mylat" Text="Latitude: " IsVisible="False" FontSize="13"/>
-        <Label x:Name="mylong" Text="Longitude: " FontSize="13" IsVisible="False"/>
-      
-        <maps:Map x:Name="map"
-               IsShowingUser="True"
-               MoveToLastRegionOnLayoutChange="True" HasZoomEnabled="True">
-        </maps:Map>
-        <StackLayout VerticalOptions="End" 
+             x:Class="Diaspora.Emergency">
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout BackgroundColor="Ivory" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <ImageButton HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent" Source="http://www.akyinvestmentsltd.com/diaspora/emr.png" HeightRequest="400"/>
+            
+           </StackLayout>
+            <StackLayout VerticalOptions="End" 
                                HorizontalOptions="FillAndExpand" 
                                Orientation="Horizontal"          
                                Padding="10,5,10,5" HeightRequest="50" BackgroundColor="#E0F8F1">
             <ImageButton HorizontalOptions="StartAndExpand" Source = "https://img.icons8.com/nolan/64/000000/user-male-circle.png" HeightRequest="50" WidthRequest="100"
-                         BackgroundColor="Transparent" x:Name="profile" Clicked="profile_Clicked"/>
+                         BackgroundColor="Transparent" x:Name="prof" Clicked="prof_Clicked"/>
             <ImageButton HorizontalOptions="CenterAndExpand" Source="https://img.icons8.com/nolan/64/000000/worldwide-location.png" WidthRequest="100" HeightRequest="100"
-                         BackgroundColor="Transparent" x:Name="home" Clicked="home_Clicked" />
+                         BackgroundColor="Transparent" />
             <ImageButton HorizontalOptions="EndAndExpand" Source="https://img.icons8.com/cute-clipart/64/000000/warning-shield.png" HeightRequest="50" WidthRequest="100"
-                         BackgroundColor="Transparent" x:Name="emergency" Clicked="emergency_Clicked" />
-        </StackLayout>
-    </StackLayout>
+                         BackgroundColor="Transparent" />
 
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -80,7 +80,7 @@ namespace Diaspora
                     client.UploadValuesCompleted += Client_UploadValuesCompleted;
                     client.UploadValuesAsync(uri, parameters);
 
-                    await Navigation.PushAsync(new MainPage());
+                    //await Navigation.PushAsync(new MainPage());
                 }
                 else
                 {

@@ -20,15 +20,43 @@ namespace Diaspora
         public Profile()
         {
             InitializeComponent();
-            LoadData();
+            MapMe();
+            //LoadData();
         }
 
-        private async void profile_Clicked(object sender, EventArgs e)
+
+        public class ItemClass
         {
-            await Navigation.PushAsync(new Profile());
+            public string user_id { get; set; }
+            public string u_name { get; set; }
+            public string u_position { get; set; }
+            public string u_pic { get; set; }
+            public string u_company { get; set; }
+            }
+        public async void LoadData()
+        {
+            var content = "";
+            HttpClient client = new HttpClient();
+            var RestURL = "http://www.akyinvestmentsltd.com/diaspora/results.php";
+            client.BaseAddress = new Uri(RestURL);
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.GetAsync(RestURL);
+            content = await response.Content.ReadAsStringAsync();
+            var Items = JsonConvert.DeserializeObject<List<ItemClass>>(content);
+            u_profile.ItemsSource = Items;
         }
 
-        private async void home_Clicked(object sender, EventArgs e)
+        private async void emg_btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Emergency());
+        }
+
+        private async void map_btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+        public async void MapMe()
         {
             try
             {
@@ -59,18 +87,16 @@ namespace Diaspora
                     map.MoveToRegion(mapSpan);
                     map.Pins.Add(pin);
 
-                    string upspt = "3";
                     //insert into database
                     WebClient client = new WebClient();
-                    Uri uri = new Uri("http://www.akyinvestmentsltd.com/diaspora/index.php");
+                    Uri uri = new Uri("http://www.akyinvestmentsltd.com/DiasporaApi/locate.php");
                     NameValueCollection parameters = new NameValueCollection();
                     parameters.Add("user_lat", mylat);
                     parameters.Add("user_long", mylong);
-                    parameters.Add("user_id", upspt);
                     client.UploadValuesCompleted += Client_UploadValuesCompleted;
                     client.UploadValuesAsync(uri, parameters);
 
-                    await Navigation.PushAsync(new MainPage());
+                    //await Navigation.PushAsync(new MainPage());
                 }
                 else
                 {
@@ -99,43 +125,18 @@ namespace Diaspora
             }
 
         }
-
-        private void emergency_Clicked(object sender, EventArgs e)
-        {
-
-        }
-        private void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
+        private async void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
             string r = Encoding.UTF8.GetString(e.Result);
             if (r == "login")
             {
-                //exeption to handle if not logged in
+                await Navigation.PushAsync (new login());
             }
             else
             {
-                DisplayAlert("Alert", r, "OK");
+               //DisplayAlert("Alert", r, "OK");
             }
 
-        }
-        public class ItemClass
-        {
-            public string user_id { get; set; }
-            public string u_name { get; set; }
-            public string u_position { get; set; }
-            public string u_pic { get; set; }
-            public string u_company { get; set; }
-            }
-        public async void LoadData()
-        {
-            var content = "";
-            HttpClient client = new HttpClient();
-            var RestURL = "http://www.akyinvestmentsltd.com/diaspora/results.php";
-            client.BaseAddress = new Uri(RestURL);
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = await client.GetAsync(RestURL);
-            content = await response.Content.ReadAsStringAsync();
-            var Items = JsonConvert.DeserializeObject<List<ItemClass>>(content);
-            u_profile.ItemsSource = Items;
         }
     }
 }
