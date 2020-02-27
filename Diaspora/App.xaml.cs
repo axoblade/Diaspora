@@ -10,7 +10,7 @@ namespace Diaspora
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Profile());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

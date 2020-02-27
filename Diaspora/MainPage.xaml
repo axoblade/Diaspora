@@ -8,24 +8,13 @@
              x:Class="Diaspora.MainPage">
 
     <StackLayout>
-        <Label x:Name="mylat" Text="Latitude: " IsVisible="False" FontSize="13"/>
-        <Label x:Name="mylong" Text="Longitude: " FontSize="13" IsVisible="False"/>
-      
+
         <maps:Map x:Name="map"
                IsShowingUser="True"
-               MoveToLastRegionOnLayoutChange="True" HasZoomEnabled="True">
+                HasZoomEnabled="True"
+                  MapType="Street"
+                  MoveToLastRegionOnLayoutChange="True">
         </maps:Map>
-        <StackLayout VerticalOptions="End" 
-                               HorizontalOptions="FillAndExpand" 
-                               Orientation="Horizontal"          
-                               Padding="10,5,10,5" HeightRequest="50" BackgroundColor="#E0F8F1">
-            <ImageButton HorizontalOptions="StartAndExpand" Source = "https://img.icons8.com/nolan/64/000000/user-male-circle.png" HeightRequest="50" WidthRequest="100"
-                         BackgroundColor="Transparent" x:Name="profile" Clicked="profile_Clicked"/>
-            <ImageButton HorizontalOptions="CenterAndExpand" Source="https://img.icons8.com/nolan/64/000000/worldwide-location.png" WidthRequest="100" HeightRequest="100"
-                         BackgroundColor="Transparent" x:Name="home" Clicked="home_Clicked" />
-            <ImageButton HorizontalOptions="EndAndExpand" Source="https://img.icons8.com/cute-clipart/64/000000/warning-shield.png" HeightRequest="50" WidthRequest="100"
-                         BackgroundColor="Transparent" x:Name="emergency" Clicked="emergency_Clicked" />
-        </StackLayout>
     </StackLayout>
 
 </ContentPage>

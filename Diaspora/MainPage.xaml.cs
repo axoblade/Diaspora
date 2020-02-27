@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -24,107 +25,58 @@ namespace Diaspora
         public MainPage()
         {
             InitializeComponent();
-           // getLocation();
+            // getLocation();
+            Findme();
         }
 
-        //public async void getLocation()
-        //{
-            
-
-        //}
-
-       
-
-        private async void profile_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Profile());
-        }
-
-        private async void home_Clicked(object sender, EventArgs e)
-        {
-            try
+        public async void Findme()
             {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var Location = await Geolocation.GetLocationAsync(request);
-
-                if (Location != null)
+                try
                 {
-                    mylat.Text = Location.Latitude.ToString();
-                    mylong.Text = Location.Longitude.ToString();
-                    var ab = Location.Latitude;
-                    var bc = Location.Longitude;
-                    Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map
-                    {
-                        // ...
-                    };
-                    Pin pin = new Pin
-                    {
-                        Label = "User name",
-                        Address = "City & Occupation",
-                        Type = PinType.Place,
-                        Position = new Position(ab, bc)
-                    };
-                    Position position = new Position(ab, bc);
-                    //MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
-                    //Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map(mapSpan);
-                    MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.444));
-                    map.MoveToRegion(mapSpan);
-                    map.Pins.Add(pin);
-
+                    var locator = CrossGeolocator.Current;
+                    var position = await locator.GetPositionAsync();
+                    map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromKilometers(0.5)));
                     //insert into database
                     WebClient client = new WebClient();
                     Uri uri = new Uri("http://www.akyinvestmentsltd.com/diaspora/index.php");
                     NameValueCollection parameters = new NameValueCollection();
-                    parameters.Add("user_lat", mylat.Text);
-                    parameters.Add("user_long", mylong.Text);
+                    parameters.Add("user_lat", position.Latitude.ToString());
+                    parameters.Add("user_long", position.Longitude.ToString());
                     client.UploadValuesCompleted += Client_UploadValuesCompleted;
                     client.UploadValuesAsync(uri, parameters);
-
-                    //await Navigation.PushAsync(new MainPage());
                 }
-                else
+                catch (FeatureNotSupportedException fnsEx)
                 {
+                    // Handle not supported on device exception
                     await DisplayAlert("Error", "Location Not supported", "Ok");
                 }
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Handle not supported on device exception
-                await DisplayAlert("Error", "Location Not supported", "Ok");
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-                await DisplayAlert("Alert!", "Please Turn on Location", "Ok");
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-                await DisplayAlert("Error", "Location permission denied", "Ok");
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-                await DisplayAlert("Error", "Reload the APP", "Ok");
-            }
-          
-        }
-
-        private void emergency_Clicked(object sender, EventArgs e)
-        {
-
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                    await DisplayAlert("Alert!", "Please Turn on Location", "Ok");
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                    await DisplayAlert("Error", "Location permission denied", "Ok");
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
+                    await DisplayAlert("Error", "Reload the APP", "Ok");
+                }
         }
         private void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
             string r = Encoding.UTF8.GetString(e.Result);
-            if (r == "login")
-            {
-                //exeption to handle if not logged in
-            }
-            else
-            {
+            //if (r == "login")
+            //{
+            //    //exeption to handle if not logged in
+            //}
+            //else
+            //{
                 DisplayAlert("Alert", r, "OK");
-            }
+          //  }
 
         }
 

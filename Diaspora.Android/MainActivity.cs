@@ -15,7 +15,7 @@ using static Android.Support.Design.Widget.BottomNavigationView;
 
 namespace Diaspora.Droid
 {
-    [Activity(Label = "Diaspora", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Diaspora", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity//,IOnNavigationItemSelectedListener
     {
         //private CurvedBottomNavigationView bottom_nav;

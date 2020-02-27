@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.3.0.991211" />
@@ -23,13 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Emergency.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="login.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Profile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
