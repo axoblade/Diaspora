@@ -80,5 +80,9 @@ namespace Diaspora
 
         }
 
+        private async void home_btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Emergency());
+        }
     }
 }
