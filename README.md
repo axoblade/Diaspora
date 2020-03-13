@@ -1,0 +1,9 @@
+# Diaspora
+#this is a public version of Diaspora App; an App to track workers' welfare from the Diaspora and notify in case of danger and emergency.
+This respo was created by Axoblade
+Feel free to contribute positively tot his respo
+Email me axoblade@gmail.com
+#module one of Maps is active and Login.xml also inclussive; this is just the begining. Remember to date your commits and update the read me file incase of changes....
+..............................
+Last committed 27th Feb 2020
+.............................
