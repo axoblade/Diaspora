@@ -6,37 +6,24 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
              x:Class="Diaspora.MainPage">
-
     <StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="700"/>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" BackgroundColor="Aquamarine">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                    </Grid.ColumnDefinitions>
-                    <ImageButton Source="http://www.akyinvestmentsltd.com/images/mapme.png" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent"/>
-                    <ImageButton Source="http://www.akyinvestmentsltd.com/images/mapme.png" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent"/>
-                    <ImageButton Source="http://www.akyinvestmentsltd.com/images/mapme.png" Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent"/>
-                    <ImageButton Source="http://www.akyinvestmentsltd.com/images/mapme.png" Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" x:Name="home_btn" Clicked="home_btn_Clicked"/>
-                </Grid>
-            </StackLayout>
-            <maps:Map x:Name="map"
+    <StackLayout VerticalOptions="Start" 
+                               HorizontalOptions="FillAndExpand" 
+                               Orientation="Horizontal"          
+                               >
+            <ImageButton HorizontalOptions="StartAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
+            <ImageButton HorizontalOptions="CenterAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
+            <ImageButton HorizontalOptions="EndAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand">
+        <maps:Map x:Name="map"
                IsShowingUser="True"
                 HasZoomEnabled="True"
                   MapType="Street"
-                  MoveToLastRegionOnLayoutChange="True" Grid.Row="1">
-            </maps:Map>
-        </Grid>
+                  MoveToLastRegionOnLayoutChange="True">
+        </maps:Map>
     </StackLayout>
+    </StackLayout>
+
 
 </ContentPage>
