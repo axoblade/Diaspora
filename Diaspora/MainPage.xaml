@@ -6,15 +6,6 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
              x:Class="Diaspora.MainPage">
-    <StackLayout>
-    <StackLayout VerticalOptions="Start" 
-                               HorizontalOptions="FillAndExpand" 
-                               Orientation="Horizontal"          
-                               >
-            <ImageButton HorizontalOptions="StartAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
-            <ImageButton HorizontalOptions="CenterAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
-            <ImageButton HorizontalOptions="EndAndExpand" Source="http://www.akyinvestmentsltd.com/images/icon1.png" WidthRequest="50" BackgroundColor="Transparent"/>
-    </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand">
         <maps:Map x:Name="map"
                IsShowingUser="True"
@@ -22,8 +13,13 @@
                   MapType="Street"
                   MoveToLastRegionOnLayoutChange="True">
         </maps:Map>
+        <AbsoluteLayout>
+            <ActivityIndicator
+                x:Name="loadInd"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                IsRunning="False"
+                IsVisible="False"/>
+        </AbsoluteLayout>
     </StackLayout>
-    </StackLayout>
-
-
 </ContentPage>

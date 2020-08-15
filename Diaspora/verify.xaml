@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" NavigationPage.HasBackButton="False"
+             Title="Verify Phone Number"
+             x:Class="Diaspora.verify">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout"
+                     Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="8">
+            <Entry x:Name="Vcode" 
+                   HorizontalOptions="Fill" 
+                   Placeholder="Enter verification code" 
+                   Keyboard="Numeric" 
+                   HeightRequest="60"/>
+            <Button Text="Continue" 
+                    BackgroundColor="#1FBED6" 
+                    x:Name="mybtn" Clicked="mybtn_Clicked" 
+                    HorizontalOptions="Fill" TextColor="White" 
+                    HeightRequest="50" CornerRadius="45"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

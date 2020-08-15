@@ -1,14 +1,9 @@
-﻿using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Widget;
-using Diaspora.Model;
+﻿using Diaspora.Model;
 using Plugin.Geolocator;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,24 +11,24 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Xaml;
 
 namespace Diaspora
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class main : TabbedPage
     {
-        public MainPage()
+        public main()
         {
             InitializeComponent();
-            Findme();
+           // Findme();
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
         protected async override void OnAppearing()
         {
-            map.IsVisible = false;
-            loadInd.IsVisible = true;
-            loadInd.IsRunning = true;
             base.OnAppearing();
 
             using (SQLiteConnection conn = new SQLiteConnection(App.Databaselocation))
@@ -50,10 +45,7 @@ namespace Diaspora
 
                     if (NoUser == true)
                     {
-                        map.IsVisible = false;
-                        await Navigation.PushAsync(new login());
-                        loadInd.IsVisible = false;
-                        loadInd.IsRunning = false;
+                        await DisplayAlert("ALert", "No user selected", "Ok");
                     }
                     else
                     {
@@ -97,54 +89,30 @@ namespace Diaspora
                 }
                 else
                 {
-                    await Navigation.PushAsync(new login());
+                    await Navigation.PushAsync(new start());
                 }
             }
         }
-        public async void Findme()
-            {
-                try
-                {
-                    var locator = CrossGeolocator.Current;
-                    var position = await locator.GetPositionAsync();
-                    map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromKilometers(0.5)));
-                }
-                catch (FeatureNotSupportedException fnsEx)
-                {
-                    // Handle not supported on device exception
-                    await DisplayAlert("Error", "Location Not supported", "Ok");
-                }
-                catch (FeatureNotEnabledException fneEx)
-                {
-                    // Handle not enabled on device exception
-                    await DisplayAlert("Alert!", "Please Turn on Location", "Ok");
-                }
-                catch (PermissionException pEx)
-                {
-                    // Handle permission exception
-                    await DisplayAlert("Error", "Location permission denied", "Ok");
-                }
-                catch (Exception ex)
-                {
-                    // Unable to get location
-                    await DisplayAlert("Error", "Reload the APP", "Ok");
-                }
-        }
+        //public async void Findme()
+        //{
+        //
+        //}
         private async void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
             string r = Encoding.UTF8.GetString(e.Result);
-            if (r == "Success")
+            if(r == "Success")
             {
                 //handle when API called successfully
-                map.IsVisible = true;
-                loadInd.IsVisible = false;
-                loadInd.IsRunning = false;
+            }
+            if(r == "unVerified")
+            {
+                await Navigation.PushAsync(new verify());
             }
             else
             {
                 await DisplayAlert("Alert", r, "OK");
             }
-
+            
         }
     }
 }

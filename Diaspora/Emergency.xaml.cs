@@ -15,6 +15,7 @@ namespace Diaspora
         public Emergency()
         {
             InitializeComponent();
+            
         }
     }
 }

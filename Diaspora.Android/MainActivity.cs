@@ -12,6 +12,7 @@ using Com.Sdsmdg.Harjot.Vectormaster;
 using Com.Sdsmdg.Harjot.Vectormaster.Models;
 using Android.Animation;
 using static Android.Support.Design.Widget.BottomNavigationView;
+using System.IO;
 
 namespace Diaspora.Droid
 {
@@ -31,16 +32,21 @@ namespace Diaspora.Droid
             Manifest.Permission.AccessCoarseLocation,
             Manifest.Permission.AccessFineLocation
 };
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            Xamarin.Essentials.Platform.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            string dbname = "paxodb.sqlite";
+            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string fullPath = Path.Combine(folderPath, dbname);
+
+            LoadApplication(new App(fullPath));
         }
         protected override void OnStart()
         {

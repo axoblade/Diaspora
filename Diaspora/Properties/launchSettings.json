@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Diaspora": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

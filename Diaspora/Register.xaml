@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" NavigationPage.BackButtonTitle="Back"
-             x:Class="Diaspora.login"
-             Title="Login">
+             mc:Ignorable="d" NavigationPage.HasBackButton="True"
+             x:Class="Diaspora.Register"
+             Title="Register">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Padding="8">
+        <StackLayout BackgroundColor="AliceBlue" Padding="8">
+            <AbsoluteLayout>
                 <ActivityIndicator x:Name="activity"  
                        IsRunning="False"  
                        IsEnabled="False"  
@@ -17,15 +17,15 @@
                        BackgroundColor="Transparent"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand"/>
-            </StackLayout>
+            </AbsoluteLayout>
             <Frame BackgroundColor="Default" 
                HasShadow="True" 
                CornerRadius="40" 
                Style="{StaticResource stlMainFrame}" 
                VerticalOptions="CenterAndExpand" 
                HorizontalOptions="CenterAndExpand"
-                    x:Name="loginView">
-                <StackLayout VerticalOptions="StartAndExpand">
+                   x:Name="regView">
+                <StackLayout>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -45,12 +45,14 @@
                             <Image Source="https://img.icons8.com/nolan/64/email.png" 
                                    HeightRequest="30" 
                                    VerticalOptions="Center" 
-                                   Grid.Row="0" Grid.Column="0"/>
-                            <Entry Placeholder="Username" 
-                                   BackgroundColor="Transparent" 
-                                   x:Name="uname" HorizontalOptions="Fill" 
-                                   TextColor="#1FBED6" Grid.Row="0" 
-                                   Grid.Column="1"
+                                   Grid.Row="0" 
+                                   Grid.Column="0"/>
+                            <Entry Placeholder="Enter your email" 
+                                   BackgroundColor="Transparent"
+                                   x:Name="Useremail" 
+                                   HorizontalOptions="Fill" 
+                                   TextColor="#1FBED6" 
+                                   Grid.Row="0" Grid.Column="1" 
                                    Keyboard="Email"/>
                         </Grid>
                         <Grid Grid.Row="1" HorizontalOptions="Fill">
@@ -63,21 +65,39 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Source="https://img.icons8.com/nolan/64/password.png" 
-                                   HeightRequest="30" VerticalOptions="Center" />
+                                   HeightRequest="30" 
+                                   VerticalOptions="Center" />
                             <Entry Placeholder="Password" 
                                    BackgroundColor="Transparent" 
-                                   IsPassword="True" x:Name="pswd"
-                                   HorizontalOptions="Fill" 
+                                   IsPassword="True" 
+                                   x:Name="pswd" HorizontalOptions="Fill" 
                                    TextColor="#1FBED6" Grid.Row="0" 
                                    Grid.Column="1"/>
                         </Grid>
-                        <StackLayout Grid.Row="2" Spacing="12" HorizontalOptions="Fill">
-                            <Button Text="Login" BackgroundColor="#1FBED6" 
-                                    x:Name="mybtn" Clicked="mybtn_Clicked" 
-                                    HorizontalOptions="Fill" TextColor="White" 
-                                    HeightRequest="50" CornerRadius="45"/>
-                            <Button Text="Forgot Password" BackgroundColor="Purple" 
-                                    x:Name="pswdBtn" HorizontalOptions="Fill" 
+                        <Grid Grid.Row="2" HorizontalOptions="Fill">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="https://img.icons8.com/nolan/64/password.png" 
+                                   HeightRequest="30"
+                                   VerticalOptions="Center" />
+                            <Entry Placeholder="Password" 
+                                   BackgroundColor="Transparent" 
+                                   IsPassword="True" x:Name="pswd1" 
+                                   HorizontalOptions="Fill" TextColor="#1FBED6" 
+                                   Grid.Row="0" Grid.Column="1"/>
+                        </Grid>
+                        <StackLayout Grid.Row="3" HorizontalOptions="Fill">
+                            <Button Text="Register" 
+                                    BackgroundColor="#1FBED6" 
+                                    x:Name="registerBtn" 
+                                    Clicked="registerBtn_Clicked" 
+                                    HorizontalOptions="Fill" 
                                     TextColor="White" HeightRequest="50" 
                                     CornerRadius="45"/>
                         </StackLayout>

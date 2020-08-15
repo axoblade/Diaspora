@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
+             x:Class="Diaspora.start"
+             Title="WELCOME TO PAXOL">
+    <ContentPage.Content  Visual="Material">
+        <StackLayout BackgroundColor="AliceBlue" Padding="10">
+            <Frame BackgroundColor="Default" 
+               HasShadow="True" 
+               CornerRadius="40" 
+               Style="{StaticResource stlMainFrame}" 
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand">
+                <StackLayout Padding="25,10,25,0">
+                    
+                    <Label Text="WELCOME TO PAXOL" 
+                           VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" 
+                           FontSize="Title"/>
+                    
+                    <Button Text="Login" 
+                            BackgroundColor="#1FBED6" 
+                            x:Name="mybtn"
+                            Clicked="mybtn_Clicked"
+                            HorizontalOptions="Fill" 
+                            TextColor="White" 
+                            HeightRequest="50" 
+                            CornerRadius="45"/>
+                    <Label Text="OR" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    
+                    <Button Text="Register" 
+                            BackgroundColor="Purple" 
+                            x:Name="regBtn"
+                            Clicked="regBtn_Clicked"
+                            HorizontalOptions="Fill" 
+                            TextColor="White" 
+                            HeightRequest="50" 
+                            CornerRadius="45"/>
+            </StackLayout>
+        </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
