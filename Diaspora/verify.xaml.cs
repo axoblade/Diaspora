@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,10 +20,12 @@ namespace Diaspora
         {
             InitializeComponent();
         }
+
         protected override bool OnBackButtonPressed()
         {
             return true;
         }
+
         private async void mybtn_Clicked(object sender, EventArgs e)
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.Databaselocation))
@@ -47,13 +49,25 @@ namespace Diaspora
                         var Hist_username = lastName.user_email;
                         try
                         {
-                            WebClient client = new WebClient();
-                            Uri uri = new Uri("https://apis.paxol.cloud/verify.php");
-                            NameValueCollection parameters = new NameValueCollection();
-                            parameters.Add("username", Hist_username);
-                            parameters.Add("code", Vcode.Text);
-                            client.UploadValuesCompleted += Client_UploadValuesCompleted;
-                            client.UploadValuesAsync(uri, parameters);
+                            var network = Connectivity.NetworkAccess;
+                            if (network != NetworkAccess.Internet)
+                            {
+                                await DisplayAlert("Alert", "You need an internet connection to continue", "Ok");
+                            }
+                            else
+                            {
+                                mybtn.IsVisible = false;
+                                activity_indicator.IsVisible = true;
+                                activity_indicator.IsRunning = true;
+                                activity_indicator.IsEnabled = true;
+                                WebClient client = new WebClient();
+                                Uri uri = new Uri("https://apis.paxol.cloud/verify.php");
+                                NameValueCollection parameters = new NameValueCollection();
+                                parameters.Add("username", Hist_username);
+                                parameters.Add("code", Vcode.Text);
+                                client.UploadValuesCompleted += Client_UploadValuesCompleted;
+                                client.UploadValuesAsync(uri, parameters);
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -70,6 +84,14 @@ namespace Diaspora
         }
         private async void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
+            activity_indicator.IsVisible = false;
+            
+            activity_indicator.IsRunning = false;
+            
+            activity_indicator.IsEnabled = false;
+            
+            mybtn.IsVisible = true;
+
             string r = Encoding.UTF8.GetString(e.Result);
             if (r == "success")
             {
@@ -94,7 +116,7 @@ namespace Diaspora
                 }
                 else
                 {
-                    Navigation.PushAsync(new start());
+                    Navigation.PushAsync(new phone());
                 }
             }
         }

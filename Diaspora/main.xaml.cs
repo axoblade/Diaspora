@@ -89,7 +89,7 @@ namespace Diaspora
                 }
                 else
                 {
-                    await Navigation.PushAsync(new start());
+                    await Navigation.PushAsync(new phone());
                 }
             }
         }
@@ -100,13 +100,9 @@ namespace Diaspora
         private async void Client_UploadValuesCompleted(object sender, UploadValuesCompletedEventArgs e)
         {
             string r = Encoding.UTF8.GetString(e.Result);
-            if(r == "Success")
+            if(r == "success")
             {
                 //handle when API called successfully
-            }
-            if(r == "unVerified")
-            {
-                await Navigation.PushAsync(new verify());
             }
             else
             {

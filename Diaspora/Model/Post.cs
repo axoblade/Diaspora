@@ -11,6 +11,8 @@ namespace Diaspora.Model
         public int Id { get; set; }
         [Unique, MaxLength(100)]
         public string user_email { get; set; }
+        
+        public int stat { get; set; }
 
         public override string ToString()
         {

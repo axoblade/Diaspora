@@ -10,8 +10,8 @@
         PAXOL
     </TabbedPage.Title>
     <TabbedPage.Children>
-        <local:Profile Title="Account" IconImageSource="userpic.png" />
-        <local:MainPage Title="Map" IconImageSource="mapico.png" />
         <local:Emergency Title="Alert" IconImageSource="alertme.png" />
+        <local:MainPage Title="Map" IconImageSource="mapico.png" />
+        <local:Profile Title="Account" IconImageSource="userpic.png" />
     </TabbedPage.Children>
 </TabbedPage>

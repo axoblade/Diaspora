@@ -5,11 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" NavigationPage.HasBackButton="False"
              x:Class="Diaspora.phone"
-             Title="Contact Details">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout"
-                     Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
+             Title="Welcome to Paxol">
+
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Padding="8">
             <Entry x:Name="uphone" 
@@ -22,6 +19,13 @@
                     x:Name="mybtn" Clicked="mybtn_Clicked" 
                     HorizontalOptions="Fill" TextColor="White" 
                     HeightRequest="50" CornerRadius="45"/>
+
+                <ActivityIndicator x:Name="activity_indicator"  
+                       IsRunning="False"  
+                       IsEnabled="False"  
+                       IsVisible="False"  
+                       Color="#1FBED6"  
+                       HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

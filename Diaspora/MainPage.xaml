@@ -6,20 +6,22 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
              x:Class="Diaspora.MainPage">
+    
     <StackLayout VerticalOptions="FillAndExpand">
+
+        <ActivityIndicator
+            x:Name="loadInd"
+            HorizontalOptions="Fill"
+            VerticalOptions="Start"
+            IsRunning="False"
+            IsVisible="False"
+            Color="#1FBED6"/>
         <maps:Map x:Name="map"
                IsShowingUser="True"
                 HasZoomEnabled="True"
                   MapType="Street"
                   MoveToLastRegionOnLayoutChange="True">
         </maps:Map>
-        <AbsoluteLayout>
-            <ActivityIndicator
-                x:Name="loadInd"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                IsRunning="False"
-                IsVisible="False"/>
-        </AbsoluteLayout>
-    </StackLayout>
+            
+        </StackLayout>
 </ContentPage>

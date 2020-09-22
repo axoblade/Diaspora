@@ -6,9 +6,8 @@
              mc:Ignorable="d" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
              x:Class="Diaspora.Emergency">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="emr" Text="emergency"/>
-            <AbsoluteLayout>
+        <StackLayout BackgroundColor="AliceBlue">
+            <AbsoluteLayout x:Name="loader" IsVisible="False">
                 <ActivityIndicator 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
@@ -16,6 +15,138 @@
                     IsVisible="False"
                     IsRunning="False"/>
             </AbsoluteLayout>
+            <Frame VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                   Padding="10" CornerRadius="10" BackgroundColor="Transparent">
+            <Grid HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Padding="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition  Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                            <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                        <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                        <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                            <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                            <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                            <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <StackLayout>
+                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
+                            CornerRadius="10"
+                           Source="alertme.png"/>
+                            <Label Text="Covid-19" Grid.Row="1"
+                           TextColor="RoyalBlue"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Body"
+                           BackgroundColor="White"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
