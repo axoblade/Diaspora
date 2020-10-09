@@ -13,6 +13,7 @@ using Com.Sdsmdg.Harjot.Vectormaster.Models;
 using Android.Animation;
 using static Android.Support.Design.Widget.BottomNavigationView;
 using System.IO;
+using Xamd.ImageCarousel.Forms.Plugin.Droid;
 
 namespace Diaspora.Droid
 {
@@ -41,6 +42,7 @@ namespace Diaspora.Droid
 
             Xamarin.Essentials.Platform.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCarouselRenderer.Init();
 
             string dbname = "paxodb.sqlite";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

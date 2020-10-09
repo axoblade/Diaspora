@@ -7,14 +7,17 @@
              x:Class="Diaspora.Emergency">
     <ContentPage.Content>
         <StackLayout BackgroundColor="AliceBlue">
-            <AbsoluteLayout x:Name="loader" IsVisible="False">
-                <ActivityIndicator 
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
-                    x:Name="loadInd"
+            <ActivityIndicator 
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    x:Name="loader"
                     IsVisible="False"
                     IsRunning="False"/>
-            </AbsoluteLayout>
+            <Frame VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="5"
+                   HasShadow="True">
+                <Image Source="https://www.apis.paxol.cloud/image2.JPG" VerticalOptions="StartAndExpand"
+                       HorizontalOptions="FillAndExpand" HeightRequest="200"/>
+            </Frame>
             <Frame VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                    Padding="10" CornerRadius="10" BackgroundColor="Transparent">
             <Grid HorizontalOptions="FillAndExpand"
@@ -37,15 +40,14 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" CornerRadius="10" HasShadow="True">
                         <StackLayout>
-                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
+                            <ImageButton BackgroundColor="Transparent" Grid.Row="0"
+                           Source="covid.png" WidthRequest="70" x:Name="covid" Clicked="covid_Clicked" HeightRequest="70"/>
                             <Label Text="Covid-19" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>
@@ -56,15 +58,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Padding="5" HasShadow="True">
                         <StackLayout>
-                        <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
-                        <Label Text="Covid-19" Grid.Row="1"
+                        <ImageButton BackgroundColor="Transparent" Grid.Row="0"
+                           Source="ambulance.png" WidthRequest="70" x:Name="ambulance" Clicked="ambulance_Clicked"
+                                     HeightRequest="70"/>
+                        <Label Text="Ambulance" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>
@@ -75,15 +77,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Padding="5" HasShadow="True">
                         <StackLayout>
-                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
-                            <Label Text="Covid-19" Grid.Row="1"
+                            <ImageButton BackgroundColor="Transparent" Grid.Row="0"
+                           Source="bruto.png" WidthRequest="70" HeightRequest="70"
+                                         Clicked="brutality_Clicked" x:Name="brutality"/>
+                                <Label Text="Police Brutality" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>
@@ -94,15 +96,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Padding="5" HasShadow="True">
                         <StackLayout>
-                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
-                            <Label Text="Covid-19" Grid.Row="1"
+                            <ImageButton BackgroundColor="Transparent" Grid.Row="0"
+                           Source="fire.png" WidthRequest="70" HeightRequest="70"
+                                         Clicked="fire_Clicked" x:Name="fire"/>
+                            <Label Text="Fire Brigade" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>
@@ -113,15 +115,16 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" Padding="5" 
+                               CornerRadius="10" HasShadow="True">
                         <StackLayout>
-                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
-                            <Label Text="Covid-19" Grid.Row="1"
+                            <ImageButton BackgroundColor="Transparent" Grid.Row="0" 
+                           Source="rape.png" x:Name="rape"
+                                         Clicked="rape_Clicked" WidthRequest="70" HeightRequest="70"/>
+                            <Label Text="Rape" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>
@@ -132,15 +135,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                        <Frame VerticalOptions="CenterAndExpand" Padding="5" HasShadow="True">
+                        <Frame VerticalOptions="CenterAndExpand" CornerRadius="10" Padding="5" HasShadow="True">
                         <StackLayout>
-                            <ImageButton BackgroundColor="RoyalBlue" Grid.Row="0" 
-                            CornerRadius="10"
-                           Source="alertme.png"/>
-                            <Label Text="Covid-19" Grid.Row="1"
+                            <ImageButton BackgroundColor="Transparent" Grid.Row="0"
+                           Source="sos.png" WidthRequest="70" x:Name="sos"
+                                         Clicked="sos_Clicked" HeightRequest="70"/>
+                            <Label Text="General Emergency" Grid.Row="1"
                            TextColor="RoyalBlue"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="Body"
+                           FontSize="Small"
                            BackgroundColor="White"/>
                         </StackLayout>
                     </Frame>

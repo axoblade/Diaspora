@@ -7,6 +7,10 @@
     <RootNamespace>Diaspora</RootNamespace>
     <Company>PIMBAS AXOBLADE ENTERPRISES LIMITED</Company>
     <Authors>Axoblade</Authors>
+    <PackageProjectUrl>https://paxol.cloud</PackageProjectUrl>
+    <SignAssembly>false</SignAssembly>
+    <Product>Paxol</Product>
+    <PackageId>Paxol</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,12 +18,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.8.0.1364" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.8.0.1451" />
+    <PackageReference Include="Xamd.Plugins.Forms.ImageCarousel" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

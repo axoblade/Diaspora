@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamd.ImageCarousel.Forms.Plugin.iOS;
 
 namespace Diaspora.iOS
 {
@@ -23,6 +24,7 @@ namespace Diaspora.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            ImageCarouselRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -8,63 +8,64 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="LogOut" Order="Secondary" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-
-    <StackLayout BackgroundColor="AliceBlue" Padding="4">
-        <ActivityIndicator
+        <StackLayout BackgroundColor="AliceBlue" Padding="4">
+            <ActivityIndicator
                 x:Name="loadAct"
                Color="#1FBED6"
                 VerticalOptions="Start"
                 HorizontalOptions="CenterAndExpand"
                 IsRunning="False"
                 IsVisible="False"/>
-        <Frame x:Name="profFrame"
+            <Frame x:Name="profFrame"
             BackgroundColor="Default" 
                HasShadow="True" 
                CornerRadius="40" 
                Style="{StaticResource stlMainFrame}" 
                VerticalOptions="CenterAndExpand" 
                HorizontalOptions="CenterAndExpand">
-            <Grid Padding="25,10,25,0" RowSpacing="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <!-- 3. Phone & message buttons-->
-                <!--<ImageButton Grid.Row="0" Grid.Column="1" Style="{StaticResource stlContactBtn}" HorizontalOptions="End"   Source="edit.png"/>
+                <Grid Padding="25,10,25,0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!-- 3. Phone & message buttons-->
+                    <!--<ImageButton Grid.Row="0" Grid.Column="1" Style="{StaticResource stlContactBtn}" HorizontalOptions="End"   Source="edit.png"/>
             <ImageButton Grid.Row="0" Grid.Column="2" Style="{StaticResource stlContactBtn}" HorizontalOptions="Start" Source="eidt.png"/>
                 -->
 
-                <Label Grid.Row="0" TextColor="RoyalBlue" HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.ColumnSpan="3" Text="Account Summary" FontAttributes="Bold" FontSize="30"/>
-                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Date Joined: 20-3-2020" TextColor="#a5a2a2" FontSize="16"/>
-                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Contact: " FontAttributes="Bold" />
-                            <Span x:Name="Umail" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <!--4. Contact information: Board inforation-->
-                <Label Grid.Row="3" Grid.Column="0" Text="Alerts" Style="{StaticResource stlBoardTitle}" />
-                <Label Grid.Row="4" Grid.Column="0" Text="8" Style="{StaticResource stlBoardDesc}"/>
+                    <Label Grid.Row="0" TextColor="RoyalBlue" HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.ColumnSpan="3" Text="Account Summary" FontAttributes="Bold" FontSize="30"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Date Joined: 20-3-2020" TextColor="#a5a2a2" FontSize="16"/>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Contact: " FontAttributes="Bold" />
+                                <Span x:Name="Umail" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!--4. Contact information: Board inforation-->
+                    <Label Grid.Row="3" Grid.Column="0" Text="Alerts" Style="{StaticResource stlBoardTitle}" />
+                    <Label Grid.Row="4" Grid.Column="0" Text="8" Style="{StaticResource stlBoardDesc}"/>
 
-                <Label Grid.Row="3" Grid.Column="1" Text="Responded" Style="{StaticResource stlBoardTitle}"/>
-                <Label Grid.Row="4" Grid.Column="1" Text="6" Style="{StaticResource stlBoardDesc}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="Responded" Style="{StaticResource stlBoardTitle}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="6" Style="{StaticResource stlBoardDesc}"/>
 
-                <Label Grid.Row="3" Grid.Column="2" Text="Pending" Style="{StaticResource stlBoardTitle}"/>
-                <Label Grid.Row="4" Grid.Column="2" Text="2" Style="{StaticResource stlBoardDesc}"/>
+                    <Label Grid.Row="3" Grid.Column="2" Text="Pending" Style="{StaticResource stlBoardTitle}"/>
+                    <Label Grid.Row="4" Grid.Column="2" Text="2" Style="{StaticResource stlBoardDesc}"/>
 
-                <!--4. Contact information: Follow button-->
-            </Grid>
-        </Frame>
-    </StackLayout>
+                    <!--4. Contact information: Follow button-->
+                </Grid>
+            </Frame>
+            <Button TextColor="White" BackgroundColor="#2193f3" Padding="10" HorizontalOptions="FillAndExpand"
+                       VerticalOptions="EndAndExpand" Text="Alerts Summary" FontSize="Body" CornerRadius="15"/>
+        </StackLayout>
 </ContentPage>
